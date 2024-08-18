@@ -4,8 +4,16 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node dist/index.js",
+    "build": "tsc",
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error:no test specified\" && exit 1",
+    "db:start": "docker compose up -d db pgadmin",
+    "db:stop": "docker compose down db pgadmin",
+    "db:reset": "pnpm run db:stop && pnpm run db:start"
+  },
+  "engines": {
+    "node": ">=20.16.0"
   },
   "keywords": [],
   "author": "",
@@ -20,6 +28,7 @@
     "@types/express": "^4.17.21",
     "@types/node": "^22.4.0",
     "@types/pg": "^8.11.6",
+    "dotenv": "^16.4.5",
     "eslint": "^9.9.0",
     "globals": "^15.9.0",
     "jest": "^29.7.0",
